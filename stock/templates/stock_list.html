@@ -1,0 +1,35 @@
+ <div id = stock_list>
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for record in object_list %}
+        <div class="col">
+         <div class = "card-deck" style = "width: 10;">
+          <div class="card" style="width: 25rem;">
+            <div class="card-body"> 
+             <div class = "card shadow-sm"> 
+              <p class="card-header">{{record.title}}</p>
+              
+              <div class="d-flex justify-content-between align-items-center">
+                <div class = "btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">{{record.category.title}}</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">{{record.many}}個</button>
+                </div>
+                <div class = "text shadow-sm">
+                  <div class = "text-muted">{{record.comment}}</div>
+                </div> 
+                <small class = "text-muted">{{record.user.username}}</small>
+                <p class = "card-footer">{{record.posted_at}}</p>
+              </div>
+             </div>
+            </div>
+          </div>      
+         </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+ </div>
+               
