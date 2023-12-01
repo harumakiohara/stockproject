@@ -17,9 +17,8 @@
                 <div class = "btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">{{record.category.title}}</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">{{record.many}}個</button>
-                </div>
-                <div class = "text shadow-sm">
-                  <div class = "text-muted">{{record.comment}}</div>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"
+                  onclick = "location.href = '{% url 'stock:stock_detail' record.pk %}'">詳細</button> 
                 </div> 
                 <small class = "text-muted">{{record.user.username}}</small>
                 <p class = "card-footer">{{record.posted_at}}</p>

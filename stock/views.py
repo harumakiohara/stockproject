@@ -20,7 +20,7 @@ from django.core.mail import EmailMessage
 
 from .models import StockPost
 
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView, DetailView
 
 
 class IndexView(ListView):
@@ -61,8 +61,8 @@ class ContactView(FormView):
           '送信者名: {0}\nメールアドレス: {1}\n タイトル:{2}\n メッセージ:\n{3}' \
           .format(name, email, title, message)
 
-        from_email = 'admin@example.com'
-        to_list = ['admin@example.com']
+        from_email = 'xxxxxxxx@gmail.com'
+        to_list = ['jyugyou2005@gmail.com']
         message = EmailMessage(subject = subject,
                                body = message,
                                from_email = from_email,
@@ -83,5 +83,15 @@ class MypageView(ListView):
            user = self.request.user).order_by('-posted_at')
         return queryset
     
+class DetailView(DetailView):
+    template_name = 'detail.html'
+    model = StockPost
+    
+class StockDeleteView(DeleteView):
+    model = StockPost
+    template_name = 'stock_delete.html'
+    success_url = reverse_lazy('stock:mypage')
+    def delete(self,request,*args,**kwargs):
+        return super().delete(request,*args,**kwargs)
 
     

@@ -12,4 +12,10 @@ urlpatterns = [
          views.ContactView.as_view(),
          name = 'contact'),
     path('mypage/',views.MypageView.as_view(), name = 'mypage'),
+    path('stock-detail/<int:pk>',
+         views.DetailView.as_view(),
+         name = 'stock_detail'),
+    path('photo/<int:pk>/delete/',
+         views.StockDeleteView.as_view(),
+         name = 'stock_delete'),
 ]

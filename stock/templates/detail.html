@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Stock Detail{% endblock %}
+      {% block contents %}
+      
+     <div class = "syousai">
+      <br>
+      <div class = "container">
+        <div class - "row">
+          <div class = "col offset-3">
+            <h1>{{object.title}}</h1>
+            <h2>商品カテゴリ...{{object.category}}</h2>
+            <h2>入荷数...{{object.many}}個</h2>
+            <br>
+            <br>
+            <h3>備考</h3>
+            <h3>{{object.comment}}</h3>
+            <br>
+            <p>{{object.posted_at}}に{{object.user}}さんが登録</p>
+            {% if request.user == object.user %}
+            <form method="POST">
+            <a href = "{% url 'stock:stock_delete' object.pk %}"
+               class = "btn btn-primary my-2">削除する</a>
+            {% endif %}
+        </div>
+      </div>
+      {% endblock %}
+     </div>
